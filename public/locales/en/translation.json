@@ -1,0 +1,19 @@
+{
+  "welcome": "Welcome to React Boilerplate",
+  "description": "A modern React TypeScript boilerplate with all the tools you need",
+  "counter": "Count is {{count}}",
+  "buttons": {
+    "increment": "Increment",
+    "decrement": "Decrement",
+    "reset": "Reset"
+  },
+  "language": {
+    "switch": "Switch Language",
+    "current": "Current: {{lng}}"
+  },
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact"
+  }
+}

@@ -1,0 +1,36 @@
+.error-boundary {
+  padding: 2rem;
+  margin: 2rem;
+  background-color: #fee;
+  border: 2px solid #dc3545;
+  border-radius: 8px;
+  text-align: center;
+  color: #721c24;
+}
+
+.error-boundary h2 {
+  color: #dc3545;
+  margin-bottom: 1rem;
+}
+
+.error-boundary details {
+  margin: 1rem 0;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  text-align: left;
+}
+
+.error-boundary button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.error-boundary button:hover {
+  background-color: #c82333;
+}
