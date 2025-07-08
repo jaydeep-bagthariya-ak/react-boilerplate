@@ -36,6 +36,10 @@ i18n
             decrement: 'Decrement',
             reset: 'Reset',
           },
+          language: {
+            switch: 'Switch Language',
+            current: 'Current: {{lng}}',
+          },
         },
       },
       es: {
@@ -47,6 +51,10 @@ i18n
             increment: 'Incrementar',
             decrement: 'Decrementar',
             reset: 'Reiniciar',
+          },
+          language: {
+            switch: 'Cambiar Idioma',
+            current: 'Actual: {{lng}}',
           },
         },
       },
