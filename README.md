@@ -2,6 +2,25 @@
 
 A modern, production-ready React TypeScript boilerplate with all the essential tools and best practices for building scalable web applications.
 
+## 🎯 Use as Template
+
+This boilerplate is designed to be used as a template for creating new React TypeScript projects. See [USAGE.md](USAGE.md) for detailed instructions on how to create new projects from this boilerplate.
+
+### Quick Start with This Template
+
+```bash
+# Method 1: Use the provided script
+./create-project.sh my-awesome-app
+
+# Method 2: Interactive setup with customization
+node template-setup.js
+
+# Method 3: Use as GitHub template (recommended)
+# 1. Push this to GitHub
+# 2. Mark as template repository
+# 3. Use "Use this template" button
+```
+
 ## 🚀 Features
 
 - ⚡ **React 18** - Latest stable React with improved performance and features
