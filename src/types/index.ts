@@ -1,11 +1,34 @@
 // Common types used throughout the application
 
 export interface User {
-  id: string;
+  id: number;
   name: string;
+  username: string;
   email: string;
-  avatar?: string;
-  role: 'admin' | 'user';
+  address: {
+    street: string;
+    suite: string;
+    city: string;
+    zipcode: string;
+    geo: {
+      lat: string;
+      lng: string;
+    };
+  };
+  phone: string;
+  website: string;
+  company: {
+    name: string;
+    catchPhrase: string;
+    bs: string;
+  };
+}
+
+export interface Post {
+  userId: number;
+  id: number;
+  title: string;
+  body: string;
 }
 
 export interface ApiResponse<T> {

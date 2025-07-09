@@ -1,9 +1,11 @@
 import axios from 'axios';
 import type { AxiosInstance, AxiosResponse } from 'axios';
 
+import type { User, Post } from '../types';
+
 // API configuration
 const API_BASE_URL =
-  import.meta.env.VITE_API_BASE_URL || 'https://api.example.com';
+  import.meta.env.VITE_API_BASE_URL || 'https://jsonplaceholder.typicode.com';
 
 // Create axios instance
 const apiClient: AxiosInstance = axios.create({
@@ -44,5 +46,35 @@ apiClient.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+// API service methods
+export const apiService = {
+  // Users
+  async getUsers(): Promise<User[]> {
+    const response = await apiClient.get<User[]>('/users');
+    return response.data;
+  },
+
+  async getUser(id: number): Promise<User> {
+    const response = await apiClient.get<User>(`/users/${id}`);
+    return response.data;
+  },
+
+  // Posts
+  async getPosts(): Promise<Post[]> {
+    const response = await apiClient.get<Post[]>('/posts');
+    return response.data;
+  },
+
+  async getPost(id: number): Promise<Post> {
+    const response = await apiClient.get<Post>(`/posts/${id}`);
+    return response.data;
+  },
+
+  async getPostsByUser(userId: number): Promise<Post[]> {
+    const response = await apiClient.get<Post[]>(`/posts?userId=${userId}`);
+    return response.data;
+  },
+};
 
 export default apiClient;

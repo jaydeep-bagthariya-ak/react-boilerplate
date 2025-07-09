@@ -1,32 +1,36 @@
-import { useTranslation } from 'react-i18next';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import { Counter } from './components/Counter';
-import { LanguageSwitcher } from './components/LanguageSwitcher';
+import { Header } from './components/Header';
+import { HomePage, AboutPage, UsersPage, PostsPage } from './pages';
 
 import './App.css';
+import './pages/pages.css';
 
 function App() {
-  const { t } = useTranslation();
-
   return (
-    <div className="app">
-      <header className="app__header">
-        <h1 className="app__title">{t('welcome')}</h1>
-        <p className="app__description">{t('description')}</p>
-      </header>
+    <Router>
+      <div className="app">
+        <Header />
 
-      <main className="app__main">
-        <Counter />
-        <LanguageSwitcher />
-      </main>
+        <main className="app__main">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/users" element={<UsersPage />} />
+            <Route path="/posts" element={<PostsPage />} />
+          </Routes>
+        </main>
 
-      <footer className="app__footer">
-        <p>
-          Built with React 18 + TypeScript + Vite + Redux Toolkit + i18n +
-          Vitest
-        </p>
-      </footer>
-    </div>
+        <footer className="app__footer">
+          <div className="app__footer-content">
+            <p>
+              Built with React 18 + TypeScript + Vite + Redux Toolkit + React
+              Router + i18n + Vitest
+            </p>
+          </div>
+        </footer>
+      </div>
+    </Router>
   );
 }
 

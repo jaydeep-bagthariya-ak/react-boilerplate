@@ -1,4 +1,5 @@
 {
+  "appName": "React Boilerplate",
   "welcome": "Welcome to React Boilerplate",
   "description": "A modern React TypeScript boilerplate with all the tools you need",
   "counter": "Count is {{count}}",
@@ -11,9 +12,38 @@
     "switch": "Switch Language",
     "current": "Current: {{lng}}"
   },
-  "navigation": {
+  "nav": {
     "home": "Home",
     "about": "About",
-    "contact": "Contact"
+    "users": "Users",
+    "posts": "Posts"
+  },
+  "users": {
+    "title": "Users",
+    "description": "List of users from JSONPlaceholder API",
+    "loading": "Loading...",
+    "refresh": "Refresh",
+    "retry": "Try Again",
+    "error": "Failed to fetch users",
+    "email": "Email",
+    "phone": "Phone",
+    "website": "Website",
+    "company": "Company",
+    "city": "City"
+  },
+  "posts": {
+    "title": "Posts",
+    "description": "Latest posts from JSONPlaceholder API",
+    "loading": "Loading...",
+    "refresh": "Refresh",
+    "retry": "Try Again",
+    "error": "Failed to fetch posts",
+    "postId": "Post #{{id}}",
+    "userId": "User #{{userId}}"
+  },
+  "about": {
+    "title": "About",
+    "description": "This is a modern React TypeScript boilerplate with the following features:",
+    "techStack": "Tech Stack"
   }
 }

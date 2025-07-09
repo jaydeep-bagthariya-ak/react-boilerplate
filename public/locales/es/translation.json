@@ -1,4 +1,5 @@
 {
+  "appName": "React Boilerplate",
   "welcome": "Bienvenido a React Boilerplate",
   "description": "Un boilerplate moderno de React TypeScript con todas las herramientas que necesitas",
   "counter": "El contador es {{count}}",
@@ -11,9 +12,38 @@
     "switch": "Cambiar Idioma",
     "current": "Actual: {{lng}}"
   },
-  "navigation": {
+  "nav": {
     "home": "Inicio",
     "about": "Acerca de",
-    "contact": "Contacto"
+    "users": "Usuarios",
+    "posts": "Publicaciones"
+  },
+  "users": {
+    "title": "Usuarios",
+    "description": "Lista de usuarios de la API JSONPlaceholder",
+    "loading": "Cargando...",
+    "refresh": "Actualizar",
+    "retry": "Intentar de nuevo",
+    "error": "Error al cargar usuarios",
+    "email": "Correo",
+    "phone": "Teléfono",
+    "website": "Sitio web",
+    "company": "Empresa",
+    "city": "Ciudad"
+  },
+  "posts": {
+    "title": "Publicaciones",
+    "description": "Últimas publicaciones de la API JSONPlaceholder",
+    "loading": "Cargando...",
+    "refresh": "Actualizar",
+    "retry": "Intentar de nuevo",
+    "error": "Error al cargar publicaciones",
+    "postId": "Publicación #{{id}}",
+    "userId": "Usuario #{{userId}}"
+  },
+  "about": {
+    "title": "Acerca de",
+    "description": "Este es un boilerplate moderno de React TypeScript con las siguientes características:",
+    "techStack": "Stack Tecnológico"
   }
 }
