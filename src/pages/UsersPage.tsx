@@ -1,35 +1,37 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Button } from '../components/ui/Button';
-import { apiService } from '../services/api';
-import type { User } from '../types';
+import { useAppDispatch, useAppSelector } from '../hooks/redux';
+import {
+  fetchUsers,
+  selectUsers,
+  selectUsersError,
+  selectFetchUsersLoading,
+  clearError,
+} from '../store/slices/usersSlice';
 
 export const UsersPage = () => {
   const { t } = useTranslation();
-  const [users, setUsers] = useState<User[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const dispatch = useAppDispatch();
 
-  const fetchUsers = useCallback(async () => {
-    console.log('Fetching users...');
-    setLoading(true);
-    setError(null);
+  // Get state from Redux store
+  const users = useAppSelector(selectUsers);
+  const loading = useAppSelector(selectFetchUsersLoading);
+  const error = useAppSelector(selectUsersError);
 
-    try {
-      const fetchedUsers = await apiService.getUsers();
-      setUsers(fetchedUsers);
-    } catch (err) {
-      setError(t('users.error', 'Failed to fetch users'));
-      console.error('Error fetching users:', err);
-    } finally {
-      setLoading(false);
-    }
-  }, [t]);
-
+  // Fetch users on component mount
   useEffect(() => {
-    fetchUsers();
-  }, [fetchUsers]);
+    dispatch(fetchUsers());
+  }, [dispatch]);
+
+  const handleRefresh = () => {
+    dispatch(fetchUsers());
+  };
+
+  const handleClearError = () => {
+    dispatch(clearError());
+  };
 
   return (
     <div className="page">
@@ -37,9 +39,12 @@ export const UsersPage = () => {
         <header className="page__header">
           <h1 className="page__title">{t('users.title', 'Users')}</h1>
           <p className="page__description">
-            {t('users.description', 'List of users from JSONPlaceholder API')}
+            {t(
+              'users.description',
+              'List of users from JSONPlaceholder API using Redux createAsyncThunk'
+            )}
           </p>
-          <Button onClick={fetchUsers} disabled={loading}>
+          <Button onClick={handleRefresh} disabled={loading}>
             {loading
               ? t('users.loading', 'Loading...')
               : t('users.refresh', 'Refresh')}
@@ -50,7 +55,25 @@ export const UsersPage = () => {
           {error && (
             <div className="error-message">
               <p>{error}</p>
-              <Button onClick={fetchUsers} variant="secondary">
+              <div>
+                <Button onClick={handleRefresh} variant="secondary">
+                  {t('users.retry', 'Try Again')}
+                </Button>
+                <Button
+                  onClick={handleClearError}
+                  variant="secondary"
+                  style={{ marginLeft: '8px' }}
+                >
+                  {t('users.clearError', 'Clear Error')}
+                </Button>
+              </div>
+            </div>
+          )}
+
+          {!loading && !error && users.length === 0 && (
+            <div className="empty-state">
+              <p>{t('users.empty', 'No users found')}</p>
+              <Button onClick={handleRefresh}>
                 {t('users.retry', 'Try Again')}
               </Button>
             </div>

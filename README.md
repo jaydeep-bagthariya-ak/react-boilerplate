@@ -27,6 +27,7 @@ node template-setup.js
 - 🔷 **TypeScript** - Full type safety and better developer experience
 - 📦 **Vite** - Lightning fast build tool and dev server
 - 🏪 **Redux Toolkit** - Efficient state management with modern Redux
+- 🔄 **createAsyncThunk** - Complete async operation patterns with Redux Toolkit
 - 🌍 **i18next** - Internationalization with English and Spanish support
 - 🔌 **Axios** - HTTP client with interceptors and error handling
 - ✅ **Vitest** - Fast unit testing framework
@@ -35,6 +36,19 @@ node template-setup.js
 - 🔍 **ESLint** - Linting with TypeScript and React rules
 - 🐕 **Husky** - Git hooks for code quality
 - 🎨 **Modern CSS** - Responsive design with CSS modules support
+
+## 🔄 Redux Async Operations
+
+This boilerplate includes comprehensive `createAsyncThunk` examples for handling async operations:
+
+- **Posts Management** - Fetch all posts, single posts, and posts by user
+- **User Management** - Async user data operations
+- **Error Handling** - Type-safe error handling with proper fallbacks
+- **Loading States** - Granular loading states for better UX
+- **TypeScript Integration** - Fully typed async operations
+- **Testing Examples** - Complete test suite for async thunks
+
+See [ASYNC_THUNK_GUIDE.md](ASYNC_THUNK_GUIDE.md) for detailed documentation and examples.
 
 ## 📁 Project Structure
 
@@ -49,6 +63,9 @@ src/
 ├── store/              # Redux store configuration
 │   ├── index.ts        # Store setup
 │   └── slices/         # Redux slices
+│       ├── counterSlice.ts    # Counter demo slice
+│       ├── postsSlice.ts      # Posts async operations
+│       └── usersSlice.ts      # Users async operations
 ├── services/           # API services and external integrations
 │   └── api.ts          # Axios configuration
 ├── utils/              # Utility functions

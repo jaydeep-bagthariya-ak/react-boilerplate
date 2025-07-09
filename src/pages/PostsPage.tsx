@@ -1,35 +1,37 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Button } from '../components/ui/Button';
-import { apiService } from '../services/api';
-import type { Post } from '../types';
+import { useAppDispatch, useAppSelector } from '../hooks/redux';
+import {
+  fetchPosts,
+  selectPosts,
+  selectPostsError,
+  selectFetchPostsLoading,
+  clearError,
+} from '../store/slices/postsSlice';
 
 export const PostsPage = () => {
   const { t } = useTranslation();
-  const [posts, setPosts] = useState<Post[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const dispatch = useAppDispatch();
 
-  const fetchPosts = useCallback(async () => {
-    setLoading(true);
-    setError(null);
+  // Get state from Redux store
+  const posts = useAppSelector(selectPosts);
+  const loading = useAppSelector(selectFetchPostsLoading);
+  const error = useAppSelector(selectPostsError);
 
-    try {
-      const fetchedPosts = await apiService.getPosts();
-      // Limit to first 10 posts for better UX
-      setPosts(fetchedPosts.slice(0, 10));
-    } catch (err) {
-      setError(t('posts.error', 'Failed to fetch posts'));
-      console.error('Error fetching posts:', err);
-    } finally {
-      setLoading(false);
-    }
-  }, [t]);
-
+  // Fetch posts on component mount
   useEffect(() => {
-    fetchPosts();
-  }, [fetchPosts]);
+    dispatch(fetchPosts());
+  }, [dispatch]);
+
+  const handleRefresh = () => {
+    dispatch(fetchPosts());
+  };
+
+  const handleClearError = () => {
+    dispatch(clearError());
+  };
 
   return (
     <div className="page">
@@ -37,9 +39,12 @@ export const PostsPage = () => {
         <header className="page__header">
           <h1 className="page__title">{t('posts.title', 'Posts')}</h1>
           <p className="page__description">
-            {t('posts.description', 'Latest posts from JSONPlaceholder API')}
+            {t(
+              'posts.description',
+              'Latest posts from JSONPlaceholder API using Redux createAsyncThunk'
+            )}
           </p>
-          <Button onClick={fetchPosts} disabled={loading}>
+          <Button onClick={handleRefresh} disabled={loading}>
             {loading
               ? t('posts.loading', 'Loading...')
               : t('posts.refresh', 'Refresh')}
@@ -50,9 +55,18 @@ export const PostsPage = () => {
           {error && (
             <div className="error-message">
               <p>{error}</p>
-              <Button onClick={fetchPosts} variant="secondary">
-                {t('posts.retry', 'Try Again')}
-              </Button>
+              <div>
+                <Button onClick={handleRefresh} variant="secondary">
+                  {t('posts.retry', 'Try Again')}
+                </Button>
+                <Button
+                  onClick={handleClearError}
+                  variant="secondary"
+                  style={{ marginLeft: '8px' }}
+                >
+                  {t('posts.clearError', 'Clear Error')}
+                </Button>
+              </div>
             </div>
           )}
 
@@ -64,7 +78,7 @@ export const PostsPage = () => {
 
           {posts.length > 0 && (
             <div className="posts-list">
-              {posts.map(post => (
+              {posts.slice(0, 10).map(post => (
                 <article key={post.id} className="post-card">
                   <header className="post-card__header">
                     <h2 className="post-card__title">{post.title}</h2>
@@ -81,6 +95,15 @@ export const PostsPage = () => {
                   </div>
                 </article>
               ))}
+            </div>
+          )}
+
+          {!loading && !error && posts.length === 0 && (
+            <div className="empty-state">
+              <p>{t('posts.empty', 'No posts found')}</p>
+              <Button onClick={handleRefresh}>
+                {t('posts.retry', 'Try Again')}
+              </Button>
             </div>
           )}
         </main>
