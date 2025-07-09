@@ -24,41 +24,6 @@ i18n
       order: ['localStorage', 'navigator'],
       caches: ['localStorage'],
     },
-
-    resources: {
-      en: {
-        translation: {
-          welcome: 'Welcome to React Boilerplate',
-          description: 'A modern React TypeScript boilerplate',
-          counter: 'Count is {{count}}',
-          buttons: {
-            increment: 'Increment',
-            decrement: 'Decrement',
-            reset: 'Reset',
-          },
-          language: {
-            switch: 'Switch Language',
-            current: 'Current: {{lng}}',
-          },
-        },
-      },
-      es: {
-        translation: {
-          welcome: 'Bienvenido a React Boilerplate',
-          description: 'Un boilerplate moderno de React TypeScript',
-          counter: 'El contador es {{count}}',
-          buttons: {
-            increment: 'Incrementar',
-            decrement: 'Decrementar',
-            reset: 'Reiniciar',
-          },
-          language: {
-            switch: 'Cambiar Idioma',
-            current: 'Actual: {{lng}}',
-          },
-        },
-      },
-    },
   });
 
 export default i18n;
