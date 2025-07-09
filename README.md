@@ -23,7 +23,7 @@ node template-setup.js
 
 ## 🚀 Features
 
-- ⚡ **React 18** - Latest stable React with improved performance and features
+- ⚡ **React 19** - Latest stable React with improved performance and features
 - 🔷 **TypeScript** - Full type safety and better developer experience
 - 📦 **Vite** - Lightning fast build tool and dev server
 - 🏪 **Redux Toolkit** - Efficient state management with modern Redux

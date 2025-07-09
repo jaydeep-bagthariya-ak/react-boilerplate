@@ -4,6 +4,17 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
   plugins: [react()],
+  resolve: {
+    alias: {
+      '@': '/src',
+      '@/components': '/src/components',
+      '@/hooks': '/src/hooks',
+      '@/store': '/src/store',
+      '@/services': '/src/services',
+      '@/utils': '/src/utils',
+      '@/types': '/src/types',
+    },
+  },
   test: {
     globals: true,
     environment: 'jsdom',

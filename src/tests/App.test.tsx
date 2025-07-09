@@ -1,36 +1,27 @@
-import { render, screen } from '@testing-library/react';
-import { Provider } from 'react-redux';
 import { describe, expect, it } from 'vitest';
 
-import App from '../App';
-import { store } from '../store';
+import { AppContent } from '../App';
 
-import '../i18n';
-
-const AppWithProviders = () => (
-  <Provider store={store}>
-    <App />
-  </Provider>
-);
+import { render, screen } from './test-utils';
 
 describe('App', () => {
   it('renders welcome message', () => {
-    render(<AppWithProviders />);
+    render(<AppContent />);
     expect(
       screen.getByText('Welcome to React Boilerplate')
     ).toBeInTheDocument();
   });
 
   it('renders counter component', () => {
-    render(<AppWithProviders />);
+    render(<AppContent />);
     expect(screen.getByText(/Count is/)).toBeInTheDocument();
   });
 
   it('renders language switcher button', () => {
-    render(<AppWithProviders />);
+    render(<AppContent />);
     // Look for the button by its class or content that we know will be there
     expect(
-      screen.getByRole('button', { name: /language\.switch/ })
+      screen.getByRole('button', { name: /Switch Language/ })
     ).toBeInTheDocument();
   });
 });

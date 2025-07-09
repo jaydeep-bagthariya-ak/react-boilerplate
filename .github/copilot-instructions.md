@@ -6,7 +6,7 @@ This is a modern React TypeScript boilerplate project. When working on this code
 
 ## Tech Stack
 
-- **React 18** with TypeScript
+- **React 19** with TypeScript
 - **Vite** for build tooling
 - **Redux Toolkit** for state management
 - **React i18next** for internationalization
