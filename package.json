@@ -1,7 +1,7 @@
 {
-  "name": "reactboilerplate",
+  "name": "test-project",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -71,5 +71,6 @@
     "*.{js,jsx,css,md,json}": [
       "prettier --write"
     ]
-  }
+  },
+  "description": "A modern React TypeScript application"
 }
