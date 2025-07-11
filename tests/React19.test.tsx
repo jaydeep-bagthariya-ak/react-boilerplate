@@ -1,7 +1,7 @@
 import React, { Suspense, useRef, useState } from 'react';
 import { describe, expect, it } from 'vitest';
 
-import { render, screen } from './test-utils';
+import { render, screen } from './utils/test-utils';
 
 // Test that React 19 features are working
 describe('React 19 Compatibility', () => {

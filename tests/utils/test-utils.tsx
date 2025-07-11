@@ -6,7 +6,7 @@ import { I18nextProvider } from 'react-i18next';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 
-import { store } from '../store';
+import { store } from '../../src/store';
 
 import { defaultTestI18n, createTestI18n } from './i18n-utils';
 import type { SupportedLanguage } from './i18n-utils';

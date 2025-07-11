@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
 
-import { AppContent } from '../App';
+import { AppContent } from '../src/App';
 
-import { render, screen } from './test-utils';
+import { render, screen } from './utils/test-utils';
 
 describe('App', () => {
   it('renders welcome message', () => {

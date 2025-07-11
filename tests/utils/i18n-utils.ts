@@ -48,12 +48,20 @@ export function createTestI18n(
 export const defaultTestI18n = createTestI18n();
 
 // Helper to add new languages in the future
-export function addTranslationResource(
+export function addTestLanguage(
   language: string,
   translations: Record<string, unknown>
 ) {
-  return {
-    ...translationResources,
-    [language]: translations,
-  };
+  const testI18n = createTestI18n();
+  testI18n.addResourceBundle(language, 'translation', translations);
+  return testI18n;
+}
+
+// Helper to switch language in existing test instance
+export function switchTestLanguage(
+  testI18n: typeof i18n,
+  language: SupportedLanguage
+) {
+  testI18n.changeLanguage(language);
+  return testI18n;
 }

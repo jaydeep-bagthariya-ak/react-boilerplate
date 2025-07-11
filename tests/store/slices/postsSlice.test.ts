@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
-import { apiService } from '../services/api';
+import { apiService } from '../../../src/services/api';
 import postsReducer, {
   fetchPosts,
   fetchPost,
@@ -9,11 +9,11 @@ import postsReducer, {
   selectPosts,
   selectPostsError,
   selectFetchPostsLoading,
-} from '../store/slices/postsSlice';
-import type { Post } from '../types';
+} from '../../../src/store/slices/postsSlice';
+import type { Post } from '../../../src/types';
 
 // Mock the API service
-vi.mock('../services/api', () => ({
+vi.mock('../../../src/services/api', () => ({
   apiService: {
     getPosts: vi.fn(),
     getPost: vi.fn(),
