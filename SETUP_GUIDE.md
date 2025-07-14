@@ -4,28 +4,46 @@ This guide explains how to use the React TypeScript Boilerplate after cloning th
 
 ## Quick Setup
 
-After cloning this repository, run the setup script to initialize your project:
+After cloning this repository, choose one of these setup options:
+
+### Option 1: Clean Setup (Recommended)
 
 ```bash
 # Clone the repository
 git clone <repository-url> my-project-name
 cd my-project-name
 
-# Run setup script
-./setup-project.sh
-
-# Or specify a custom project name
-./setup-project.sh my-awesome-app
+# Run clean setup (removes boilerplate git history)
+./setup-project-clean.sh my-project-name
 ```
 
-## What the setup script does:
+### Option 2: Interactive Setup
+
+```bash
+# Clone the repository
+git clone <repository-url> my-project-name
+cd my-project-name
+
+# Run setup with choice to keep or reset git history
+./setup-project.sh my-project-name
+```
+
+## Git History Consideration
+
+⚠️ **Important**: When you clone this repository, you get all the boilerplate development commits.
+
+- `setup-project-clean.sh` - Automatically resets git history (recommended for new projects)
+- `setup-project.sh` - Asks if you want to reset git history
+- See [GIT_HISTORY.md](./GIT_HISTORY.md) for detailed information
+
+## What the setup scripts do:
 
 1. **Validates Environment**: Checks if Node.js and npm are installed
 2. **Cleans Previous Installation**: Removes any existing node_modules and lock files
 3. **Updates Project Name**: Modifies package.json with your project name
 4. **Installs Dependencies**: Runs `npm install` to install all required packages
 5. **Sets up Git Hooks**: Configures Husky for code quality checks
-6. **Initializes Git**: Creates a git repository if one doesn't exist
+6. **Handles Git History**: Resets or keeps git history based on your choice
 7. **Updates Documentation**: Creates a customized README.md for your project
 8. **Runs Quality Checks**: Performs type checking, linting, and tests
 9. **Cleans Up**: Removes setup files that are no longer needed

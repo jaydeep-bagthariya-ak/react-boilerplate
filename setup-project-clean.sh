@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# React TypeScript Boilerplate Project Setup
-# Usage: ./setup-project.sh [project-name]
-# Run this script after cloning the repository to initialize your project
+# React TypeScript Boilerplate Project Setup (Clean Version)
+# Usage: ./setup-project-clean.sh [project-name]
+# This script automatically resets git history for a clean start
 
 set -e
 
@@ -117,30 +117,16 @@ if [ -f "node_modules/.bin/husky" ]; then
     npx husky install
 fi
 
-# Handle git repository initialization
+# Always reset git history for a clean start
+print_status "Resetting git history for clean start..."
 if [ -d ".git" ]; then
-    print_warning "Existing git repository found with boilerplate history."
-    echo -e "${YELLOW}Do you want to reset the git history and start fresh? (y/N):${NC}"
-    read -r RESET_GIT
-    
-    if [[ "$RESET_GIT" =~ ^[Yy]$ ]]; then
-        print_status "Resetting git history..."
-        rm -rf .git
-        git init
-        git add .
-        git commit -m "Initial commit: $PROJECT_NAME setup"
-        print_success "Git repository reset and reinitialized!"
-    else
-        print_status "Keeping existing git history."
-        print_warning "Note: This includes all boilerplate development commits."
-    fi
-else
-    print_status "Initializing git repository..."
-    git init
-    git add .
-    git commit -m "Initial commit: $PROJECT_NAME setup"
-    print_success "Git repository initialized!"
+    rm -rf .git
 fi
+
+git init
+git add .
+git commit -m "Initial commit: $PROJECT_NAME setup"
+print_success "Git repository initialized with clean history!"
 
 # Update README.md with project name
 print_status "Updating README.md..."
@@ -216,7 +202,7 @@ src/
 ## Development
 
 1. Clone the repository
-2. Run \`./setup-project.sh\` to initialize the project
+2. Run \`./setup-project-clean.sh\` to initialize the project with clean git history
 3. Start development with \`npm run dev\`
 
 ## Contributing
@@ -270,7 +256,7 @@ print_status "Cleaning up setup files..."
 print_success "Project '$PROJECT_NAME' has been set up successfully!"
 print_success "Location: $(pwd)"
 echo ""
-echo "🎉 Your React TypeScript project is ready!"
+echo "🎉 Your React TypeScript project is ready with clean git history!"
 echo ""
 echo "Next steps:"
 echo "  npm run dev          # Start development server"
